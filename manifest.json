@@ -1,0 +1,12 @@
+{
+  "name": "Files",
+  "version": "1.0.0",
+  "identifier": "com.freebsdx.files",
+  "executable": "bin/files",
+  "icon": "Resources/icon.svg",
+  "permissions": [
+    "com.freebsdx.permission.UI",
+    "com.freebsdx.permission.STORAGE_WRITE"
+  ],
+  "mime_types": []
+}
