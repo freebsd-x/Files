@@ -149,7 +149,8 @@ static std::shared_ptr<Widget> makeRow(const DirEntry& entry,
         : Color{0.85f, 0.85f, 0.85f, 1.0f});
 
     auto row = std::make_shared<FlexRow>(std::vector<std::shared_ptr<Widget>>{
-        std::make_shared<Spacer>(16, 1), text
+        std::make_shared<Spacer>(16, 1), text,
+        std::make_shared<Spacer>(1, 1, true)   // fill the button, or it centres the name
     });
     row->setPadding(10);
     auto btn = std::make_shared<ButtonWidget>(row, on_tap);
@@ -281,7 +282,7 @@ int main() {
                 in_snapshots ? "(no snapshots)" : "(empty)", 14.0f));
 
         if (!in_snapshots)
-            status_label->setText(std::to_string(state->total_count) + " items");
+            status_label->setText(std::to_string(state->total_count) + (state->total_count == 1 ? " item" : " items"));
     };
 
     // ── Navigation callbacks ──────────────────────────────────────────────
@@ -411,7 +412,7 @@ int main() {
                 in_snapshots ? "(no snapshots)" : "(empty)", 14.0f));
 
         if (!in_snapshots)
-            status_label->setText(std::to_string(state->total_count) + " items");
+            status_label->setText(std::to_string(state->total_count) + (state->total_count == 1 ? " item" : " items"));
         else if (state->total_count > 0)
             status_label->setText(std::to_string(state->total_count) + " snapshots");
     };
